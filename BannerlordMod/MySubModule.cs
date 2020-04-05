@@ -13,12 +13,9 @@ namespace InfluenceMod
         // somewhat, but that's because of incredible high influence change on a daily basis.
         // and the UI in clan windows isn't entirely showing correct number.
 
-        // GainKingdomInfluenceAction   ( check it out)
-
 
         public override void OnGameInitializationFinished(Game game)
         {
-            //CampaignEvents.DailyTickClanEvent.AddNonSerializedListener(this, clan);
             base.OnGameInitializationFinished(game);
 
             // this registers a method to be called on the game's internal DailyTickClanEvent.
