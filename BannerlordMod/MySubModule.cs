@@ -3,13 +3,12 @@ using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
 using TaleWorlds.CampaignSystem;
 
-
 namespace InfluenceMod
 {
     public class MySubModule : MBSubModuleBase
     {
         // A simple mod that set's any clan's influence that goes above 5K, to 5K.
-        // anyone below 5K, would be set to 0. Due to internal clan logic, some will always come above 5k
+        // anyone below 0, would be set to 0. Due to internal clan logic, some will always come above 5k
         // somewhat, but that's because of incredible high influence change on a daily basis.
         // and the UI in clan windows isn't entirely showing correct number.
 
@@ -26,22 +25,15 @@ namespace InfluenceMod
 
         public void OnClampClanInfluence(Clan c)
         {
-            // check if clan have a kingdom.
+            // check if clan has a kingdom.
             if (c.Kingdom != null)
             {
                 if (c.Influence > 5000f)
-                {
-                    //InformationManager.DisplayMessage(new InformationMessage("Clan " + c.Name + " have " + c.Influence.ToString() + ", setting it to 5k:)"));
+                    //InformationManager.DisplayMessage(new InformationMessage("[DEBUG] Clan " + c.Name + " has " + c.Influence.ToString() + " Influence Points, setting it to max 5k:)"));
                     c.Influence = 5000f;
-                }
                 else if (c.Influence < 0f)
-                {
                     c.Influence = 0f;
-                }
-
             }
-
         }
-
     }
 }
